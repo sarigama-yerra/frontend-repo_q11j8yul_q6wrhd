@@ -28,19 +28,20 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-950 text-white">
       <Hero onExplore={scrollToExplore} />
 
       <section ref={exploreRef} className="max-w-7xl mx-auto px-6 py-10 space-y-6">
+      <h2 className="text-xl font-semibold text-white/90">Explore</h2>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <SearchBar value={query} onChange={setQuery} />
           <div className="flex items-center gap-3">
-            <select value={type} onChange={e=>setType(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-200">
+            <select value={type} onChange={e=>setType(e.target.value)} className="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500">
               <option value="">All Types</option>
               <option value="anime">Anime</option>
               <option value="cartoon">Cartoons</option>
             </select>
-            <select value={genre} onChange={e=>setGenre(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-200">
+            <select value={genre} onChange={e=>setGenre(e.target.value)} className="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500">
               <option value="">All Genres</option>
               <option>action</option>
               <option>adventure</option>
@@ -53,7 +54,7 @@ function App() {
         <ShowGrid query={query} filter={{ type, genre }} />
       </section>
 
-      <footer className="py-10 text-center text-sm text-gray-500">
+      <footer className="py-10 text-center text-sm text-white/50">
         Built for anime and cartoons. Demo data {seeded ? 'ready' : 'loading...'}
       </footer>
     </div>

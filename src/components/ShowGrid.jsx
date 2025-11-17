@@ -29,25 +29,25 @@ export default function ShowGrid({ query, filter }) {
     load()
   }, [query, filter])
 
-  if (loading) return <p className="text-gray-500">Loading library...</p>
+  if (loading) return <p className="text-white/60">Loading library...</p>
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
       {items.map(item => (
         <a key={item._id} href={`/#show-${item._id}`} className="group">
-          <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-200">
+          <div className="aspect-[2/3] rounded-lg overflow-hidden bg-neutral-800 ring-1 ring-neutral-800">
             {item.poster_url ? (
               <img src={item.poster_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-500">No Image</div>
+              <div className="w-full h-full flex items-center justify-center text-white/40">No Image</div>
             )}
           </div>
-          <p className="mt-2 text-sm font-medium text-gray-900 line-clamp-2">{item.title}</p>
-          <p className="text-xs text-gray-500">{item.year || ''} {item.type ? `• ${item.type}`: ''}</p>
+          <p className="mt-2 text-sm font-medium text-white line-clamp-2">{item.title}</p>
+          <p className="text-xs text-white/60">{item.year || ''} {item.type ? `• ${item.type}`: ''}</p>
         </a>
       ))}
       {items.length === 0 && (
-        <p className="col-span-full text-center text-gray-500">No results found.</p>
+        <p className="col-span-full text-center text-white/60">No results found.</p>
       )}
     </div>
   )
