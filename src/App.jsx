@@ -5,7 +5,7 @@ import ShowGrid from './components/ShowGrid'
 
 const backend = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
 
-function App() {
+function HomePage() {
   const [query, setQuery] = useState('')
   const [type, setType] = useState('')
   const [genre, setGenre] = useState('')
@@ -13,7 +13,6 @@ function App() {
   const exploreRef = useRef(null)
 
   useEffect(() => {
-    // Auto-seed demo data once
     const seed = async () => {
       try {
         const res = await fetch(`${backend}/seed`, { method: 'POST' })
@@ -28,11 +27,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div>
       <Hero onExplore={scrollToExplore} />
 
       <section ref={exploreRef} className="max-w-7xl mx-auto px-6 py-10 space-y-6">
-      <h2 className="text-xl font-semibold text-white/90">Explore</h2>
+        <h2 className="text-xl font-semibold text-white/90">Explore</h2>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <SearchBar value={query} onChange={setQuery} />
           <div className="flex items-center gap-3">
@@ -52,13 +51,11 @@ function App() {
           </div>
         </div>
         <ShowGrid query={query} filter={{ type, genre }} />
-      </section>
 
-      <footer className="py-10 text-center text-sm text-white/50">
-        Built for anime and cartoons. Demo data {seeded ? 'ready' : 'loading...'}
-      </footer>
+        <p className="pt-6 text-center text-sm text-white/50">Demo data {seeded ? 'ready' : 'loading...'}</p>
+      </section>
     </div>
   )
 }
 
-export default App
+export default HomePage
